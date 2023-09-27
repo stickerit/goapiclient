@@ -1,4 +1,4 @@
-package main
+package goapiclient
 
 import (
 	"context"
@@ -32,7 +32,7 @@ func NewWithOpts(username, apiKey, instance string, opts ApiClientOpts) *ApiClie
 		username: username,
 		apiKey:   apiKey,
 		instance: instance,
-		endpoint: "https://cs-api.live.stickerit.co/public",
+		endpoint: "https://cs-api.live.stickerit.co/graphql",
 	}
 
 	if opts.Endpoint != nil {
