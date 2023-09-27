@@ -1,0 +1,68 @@
+fragment Fragment_Order on GetOrderResponse {
+  id
+  orderNumber
+  externalId
+  billing {
+    account
+  }
+  shipping {
+    city
+
+    companyName
+    countryCode
+    email
+    firstName
+    lastName
+
+    line1
+    line2
+    phone
+    postalCode
+
+    serviceSku
+
+    state
+  }
+  items {
+    id
+    designCode
+    externalId
+    productSku
+    materialSku
+    quantity
+    width
+    height
+    unit
+    files {
+      id
+      url
+    }
+    meta {
+      id
+      ns
+      key
+      type
+      value
+    }
+  }
+
+  tracking {
+    courier
+    code
+    url
+  }
+
+  meta
+}
+
+query GetOrder($orderId: ID!) {
+  orderById(id: $orderId) {
+    ...Fragment_Order
+  }
+}
+
+mutation CreateOrder($input: CreateOrderRequest!) {
+  createOrder(input: $input) {
+    ...Fragment_Order
+  }
+}
